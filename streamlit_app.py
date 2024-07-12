@@ -33,7 +33,7 @@ if ingredients_list:
 
        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
        fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
-
+       time_to_insert = st.button("Submit Order")
        
        #st.write(ingredients_string)    
 
@@ -41,7 +41,7 @@ if ingredients_list:
             values ('""" + ingredients_string + """','"""+ name_on_order+"""')"""
 
        #st.write(my_insert_stmt)
-    time_to_insert = st.button("Submit Order")
+   
  
     if time_to_insert:
            session.sql(my_insert_stmt).collect()
